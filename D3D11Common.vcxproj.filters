@@ -18,12 +18,18 @@
     <ClInclude Include="Source\GraphicWindow.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\DInput.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\D3D11System.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\WinMain.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DInput.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
