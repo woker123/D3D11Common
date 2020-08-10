@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\D3D11CBuffer.h" />
     <ClInclude Include="Source\D3D11Shader.h" />
     <ClInclude Include="Source\D3D11System.h" />
     <ClInclude Include="Source\GameInput.h" />

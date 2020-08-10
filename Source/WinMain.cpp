@@ -3,6 +3,7 @@
 #include "GraphicWindow.h"
 #include "D3D11System.h"
 #include "D3D11Shader.h"
+#include "D3D11CBuffer.h"
 
 using namespace std;
 using namespace D3DShader;
@@ -17,7 +18,8 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInstance, PSTR lpCmdLine, 
 	shared_ptr<PixelShader> ps(new PixelShader(L"./Shader/ps.hlsl", true));
 	D3D11System::Context()->VSSetShader(vs->getD3DShader().Get(), NULL, 0);
 	D3D11System::Context()->PSSetShader(ps->getD3DShader().Get(), NULL, 0);
-
+	
+	D3D11CBuffer buffer(D3D11System::Device(), D3D11System::Context(), 16);
 	
 	while (window->doMessage())
 	{
