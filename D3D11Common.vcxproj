@@ -125,12 +125,12 @@
   <ItemGroup>
     <ClInclude Include="Source\D3D11Shader.h" />
     <ClInclude Include="Source\D3D11System.h" />
-    <ClInclude Include="Source\DInput.h" />
+    <ClInclude Include="Source\GameInput.h" />
     <ClInclude Include="Source\GraphicWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\D3D11System.cpp" />
-    <ClCompile Include="Source\DInput.cpp" />
+    <ClCompile Include="Source\GameInput.cpp" />
     <ClCompile Include="Source\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>

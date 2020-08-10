@@ -43,13 +43,13 @@ struct MouseXYZ
 };
 
 
-class DInput
+class GameInput
 {
 public:
-	DInput(HINSTANCE hInstance, HWND hwnd);
-	~DInput();
-	DInput(const DInput&) = delete;
-	DInput& operator=(const DInput&) = delete;
+	GameInput(HINSTANCE hInstance, HWND hwnd);
+	~GameInput();
+	GameInput(const GameInput&) = delete;
+	GameInput& operator=(const GameInput&) = delete;
 
 
 public:
@@ -64,8 +64,8 @@ public:
 private:
 	bool initKeyDevice(HWND hwnd);
 	bool initMouseDevice(HWND hwnd);
-	bool initDInput(HINSTANCE hInstance, HWND hwnd);
-	void shutdownDInput();
+	bool initGameInput(HINSTANCE hInstance, HWND hwnd);
+	void shutdownGameInput();
 
 private:
 	MWR::ComPtr<IDirectInput8> m_directInput;

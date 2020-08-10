@@ -1,23 +1,23 @@
-#include "DInput.h"
+#include "GameInput.h"
 #include <assert.h>
 
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
 
-DInput::DInput(HINSTANCE hInstance, HWND hwnd)
+GameInput::GameInput(HINSTANCE hInstance, HWND hwnd)
 	:m_keyState{}, m_mouseState{}, m_isDetectingInput(false), m_deltaTime(0.0)
 {
-	bool init_D3DInput =
-		initDInput(hInstance, hwnd);
-	assert(init_D3DInput);
+	bool init_GameInput =
+		initGameInput(hInstance, hwnd);
+	assert(init_GameInput);
 }
 
-DInput::~DInput()
+GameInput::~GameInput()
 {
-	shutdownDInput();
+	shutdownGameInput();
 }
 
-void DInput::detectInput(float deltaTime)
+void GameInput::detectInput(float deltaTime)
 {
 	//debut only
 	assert(m_isDetectingInput = true);
@@ -41,19 +41,19 @@ void DInput::detectInput(float deltaTime)
 	}
 }
 
-PRESS_STATE DInput::getKeyboardState(KEY_TYPE key)
+PRESS_STATE GameInput::getKeyboardState(KEY_TYPE key)
 {
 	assert(m_isDetectingInput);
 	return m_keyState[(int)key] ? PRESS_STATE::PRESS_DOWN : PRESS_STATE::PRESS_UP;
 }
 
-PRESS_STATE DInput::getMouseButtonState(MOUSE_BUTTON_TYPE mouseButton)
+PRESS_STATE GameInput::getMouseButtonState(MOUSE_BUTTON_TYPE mouseButton)
 {
 	assert(m_isDetectingInput);
 	return ((unsigned char*)&m_mouseState)[(int)mouseButton] ? PRESS_STATE::PRESS_DOWN : PRESS_STATE::PRESS_UP;
 }
 
-MouseXYZ DInput::getMouseXYZSpeed()
+MouseXYZ GameInput::getMouseXYZSpeed()
 {
 	assert(m_isDetectingInput);
 	MouseXYZ mxyz;
@@ -64,7 +64,7 @@ MouseXYZ DInput::getMouseXYZSpeed()
 	return mxyz;
 }
 
-MouseXYZ DInput::getMouseXYZPosition()
+MouseXYZ GameInput::getMouseXYZPosition()
 {
 	assert(m_isDetectingInput);
 	static MouseXYZ mpos = {};
@@ -75,7 +75,7 @@ MouseXYZ DInput::getMouseXYZPosition()
 	return mpos;
 }
 
-bool DInput::initKeyDevice(HWND hwnd)
+bool GameInput::initKeyDevice(HWND hwnd)
 {
 	HRESULT result =
 		m_directInput->CreateDevice(GUID_SysKeyboard, &m_keyDevice, NULL);
@@ -90,7 +90,7 @@ bool DInput::initKeyDevice(HWND hwnd)
 	return true;
 }
 
-bool DInput::initMouseDevice(HWND hwnd)
+bool GameInput::initMouseDevice(HWND hwnd)
 {
 	HRESULT result =
 		m_directInput->CreateDevice(GUID_SysMouse, &m_mouseDevice, NULL);
@@ -105,7 +105,7 @@ bool DInput::initMouseDevice(HWND hwnd)
 	return true;
 }
 
-bool DInput::initDInput(HINSTANCE hInstance, HWND hwnd)
+bool GameInput::initGameInput(HINSTANCE hInstance, HWND hwnd)
 {
 	HRESULT result =
 		DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, &m_directInput, NULL);
@@ -118,7 +118,7 @@ bool DInput::initDInput(HINSTANCE hInstance, HWND hwnd)
 	return true;
 }
 
-void DInput::shutdownDInput()
+void GameInput::shutdownGameInput()
 {
 	m_keyDevice->Unacquire();
 	m_mouseDevice->Unacquire();

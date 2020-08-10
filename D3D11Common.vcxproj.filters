@@ -18,7 +18,7 @@
     <ClInclude Include="Source\GraphicWindow.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\DInput.h">
+    <ClInclude Include="Source\GameInput.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="Source\WinMain.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\DInput.cpp">
+    <ClCompile Include="Source\GameInput.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
