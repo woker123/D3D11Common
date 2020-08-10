@@ -1,6 +1,9 @@
 #include "DInput.h"
 #include <assert.h>
 
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dxguid.lib")
+
 DInput::DInput(HINSTANCE hInstance, HWND hwnd)
 	:m_keyState{}, m_mouseState{}, m_isDetectingInput(false), m_deltaTime(0.0)
 {

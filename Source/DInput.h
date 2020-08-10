@@ -4,9 +4,6 @@
 #include <dinput.h>
 #include <wrl.h>
 
-#pragma comment(lib, "dinput8.lib")
-#pragma comment(lib, "dxguid.lib")
-
 #define MWR Microsoft::WRL
 #define ADD_KEY(KeyName) KEY_##KeyName = DIK_##KeyName
 
