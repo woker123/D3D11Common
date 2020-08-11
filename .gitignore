@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /D3D11Common.exe
+/*.cso
