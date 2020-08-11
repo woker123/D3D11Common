@@ -1,9 +1,9 @@
 #include "D3D11System.h"
-#include <assert.h>
 
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "d3d11.lib")
 
+bool D3D11System::sm_isInitialized = false;
 std::shared_ptr<D3D11System> D3D11System::sm_instance;
 
 void D3D11System::initD3D11System(HWND hwnd)
@@ -19,8 +19,7 @@ D3D11System * D3D11System::getInstance()
 D3D11System::D3D11System(HWND hwnd)
 	:m_hwnd(hwnd)
 {
-	bool init_D3D11System =
-		initD3D11System();
+	bool init_D3D11System =	initD3D11System();
 	assert(init_D3D11System);
 }
 
@@ -37,6 +36,8 @@ void D3D11System::setViewport(int xPos, int yPos, int width, int height)
 	vp.TopLeftX = xPos;
 	vp.TopLeftY = yPos;
 	vp.Width = width;
+
+	m_context->RSSetViewports(1, &vp);
 }
 
 void D3D11System::clearRTVAndDSV(float r, float g, float b, float a, float depth, unsigned char stencil)
@@ -118,5 +119,6 @@ bool D3D11System::initD3D11System()
 	if (!createBaseDSV())
 		return false;
 
+	assert(sm_isInitialized = true);
 	return true;
 }

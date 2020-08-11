@@ -4,6 +4,7 @@
 #include <d3d11.h>
 #include <wrl.h>
 #include <memory>
+#include <assert.h>
 
 using namespace Microsoft::WRL;
 
@@ -14,14 +15,18 @@ public:
 	static D3D11System* getInstance();
 	static ComPtr<ID3D11Device> Device()
 	{
+		assert(sm_isInitialized);
 		return sm_instance->m_device;
 	}
 
 	static ComPtr<ID3D11DeviceContext> Context()
 	{
+		assert(sm_isInitialized);
 		return sm_instance->m_context;
 	}
 
+private:
+	static bool sm_isInitialized;
 	static std::shared_ptr<D3D11System> sm_instance;
 
 public:
